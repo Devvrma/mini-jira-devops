@@ -27,4 +27,4 @@ jobs:
           context: ./backend
           push: true
           # 👑 APNA DOCKERHUB USERNAME YAHAN LIKHO
-          tags: devverma/minijira-backend:latest
+          tags: devverma99/minijira-backend:latest
