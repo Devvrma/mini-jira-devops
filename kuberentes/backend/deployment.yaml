@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: minijira-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            # ConfigMap se DB Host uthayega (jo ki postgres-service hai)
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: minijira-config
+                  key: DATABASE_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: minijira-config
+                  key: POSTGRES_DB
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: minijira-config
+                  key: POSTGRES_USER
+            # Secret se Password uthayega safely
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: minijira-secret
+                  key: POSTGRES_PASSWORD
