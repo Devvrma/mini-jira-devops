@@ -1,0 +1,30 @@
+name: Frontend CI Pipeline
+
+on:
+  push:
+    paths:
+      - 'frontend/**' # Sirf tab chalega jab frontend folder me koi change hoga
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Frontend Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          push: true
+          # 👑 APNA DOCKERHUB USERNAME YAHAN LIKHO
+          tags: YOUR_DOCKERHUB_USERNAME/minijira-frontend:latest

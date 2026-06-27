@@ -1,0 +1,30 @@
+name: Backend CI Pipeline
+
+on:
+  push:
+    paths:
+      - 'backend/**' # Sirf tab chalega jab backend folder me koi change hoga
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Backend Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend
+          push: true
+          # 👑 APNA DOCKERHUB USERNAME YAHAN LIKHO
+          tags: YOUR_DOCKERHUB_USERNAME/minijira-backend:latest
