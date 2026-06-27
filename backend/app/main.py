@@ -23,4 +23,4 @@ app.include_router(dashboard.router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to Mini-Jira DevOps API!"}
+    return {"message": "Welcome to Mini-Jira DevOps API!"} #addcoma
