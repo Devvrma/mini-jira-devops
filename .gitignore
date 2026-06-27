@@ -1,0 +1,11 @@
+# Python cache
+**/__pycache__/
+*.pyc
+
+# Environment secrets
+backend/.env
+.env
+
+# Node modules cache (agar local chalaaya ho)
+**/node_modules/
+**/dist/
