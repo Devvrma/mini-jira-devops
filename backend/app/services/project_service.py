@@ -10,4 +10,4 @@ def create_project(db: Session, project: ProjectCreate, user_id: int):
     db.add(db_project)
     db.commit()
     db.refresh(db_project)
-    return db_project
+    return db_project #cicdtesting 
