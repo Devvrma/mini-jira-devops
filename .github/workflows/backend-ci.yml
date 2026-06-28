@@ -1,11 +1,7 @@
 name: Backend CI Pipeline
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "backend/**"
+  workflow_dispatch:
 
 jobs:
   build-and-push:
@@ -25,9 +21,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and Push
-        uses: docker/build-push-action@v6
-        with:
-          context: ./backend
-          push: true
-          tags: devverma99/minijira-backend:latest
+      - name: Build Image
+        run: |
+          docker build -t devverma99/minijira-backend:latest ./backend
+
+      - name: Push Image
+        run: |
+          docker push devverma99/minijira-backend:latest
