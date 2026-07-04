@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: minijira-frontend:latest
+          image: devverma99/minijirafrontend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
