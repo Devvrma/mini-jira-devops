@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mini-jira-app
+  namespace: argocd
+spec:
+  project: mini-jira-project
+  source:
+    repoURL: 'https://github.com/Devvrma/mini-jira-devops.git'
+    targetRevision: HEAD
+    path: kuberentes   # Dhyan rakhna, tumhare K8s manifests isi folder me hone chahiye
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
