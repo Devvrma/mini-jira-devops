@@ -4,15 +4,14 @@ metadata:
   name: minijira-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    # 👑 Yeh line regex backend routing ko sahi se handle karegi
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # 👇 Yeh sirf specify karta hai ki nginx ingress use ho raha hai
 spec:
   rules:
   - host: mini-jira.local
     http:
       paths:
-      - path: /api/?(.*)
-        pathType: ImplementationSpecific
+      - path: /api
+        pathType: Prefix
         backend:
           service:
             name: backend
