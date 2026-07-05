@@ -20,7 +20,7 @@ spec:
             - containerPort: 8000
           env:
             # ConfigMap se DB Host uthayega (jo ki postgres-service hai)
-            - name: DATABASE_HOST
+            - name: POSTGRES_SERVER
               valueFrom:
                 configMapKeyRef:
                   name: minijira-config
