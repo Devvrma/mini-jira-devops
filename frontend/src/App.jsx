@@ -25,7 +25,7 @@ function App() {
             </Routes>
           </div>
         </div>
-      </AuthProvider>
+      </AuthProvider>   //cicd 
     </Router>
   );
 }
