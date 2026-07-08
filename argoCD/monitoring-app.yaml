@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 61.3.0 # Standard stable version
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring # Alag namespace me rakhenge isko
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    createNamespace: true # Agar monitoring namespace nahi hai toh khud bana dega

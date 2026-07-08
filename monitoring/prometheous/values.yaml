@@ -1,0 +1,11 @@
+prometheus:
+  prometheusSpec:
+    retention: 2d # Sirf 2 din ka data store karega taaki laptop ka space na bhare
+    storageSpec:
+      disableMountSubPath: true
+
+grafana:
+  enabled: true
+  adminPassword: admin # Grafana ka login password 'admin' set kar diya
+  persistence:
+    enabled: false # Local test ke liye storage persistence off rakhi hai
