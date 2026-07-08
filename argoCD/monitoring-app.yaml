@@ -5,13 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: kube-prometheus-stack
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 61.3.0
-    helm:
-      valueFiles:
-        - monitoring/prometheus/values.yaml 
+  sources: # <--- Dhayan do, yahan 'source' ki jagah 'sources' (multiple) ho gaya h
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      targetRevision: 61.3.0
+      helm:
+        valueFiles:
+          - $values/monitoring/prometheus/values.yaml # <--- Yeh niche wale repo se file uthayega
+    
+    - repoURL: https://github.com/Devvrma/mini-jira-devops.git # <--- Tera asli GitHub Repo
+      targetRevision: main
+      ref: values # <--- Iska naam humne 'values' rakh diya jo upar use ho raha h
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -20,4 +24,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true # <-- Sahi tarika ye hai! C bada hoga aur list me aayega.
+     - CreateNamespace=true
