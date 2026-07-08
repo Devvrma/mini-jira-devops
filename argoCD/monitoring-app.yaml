@@ -8,15 +8,16 @@ spec:
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 61.3.0 # Standard stable version
+    targetRevision: 61.3.0
     helm:
       valueFiles:
-        - values.yaml
+        - ../monitoring/prometheus/values.yaml # Agar values file local repo me h to iska path map hoga, ya abhi bina valuesFiles ke bhi check kar sakte ho.
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring # Alag namespace me rakhenge isko
+    namespace: monitoring
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    createNamespace: true # Agar monitoring namespace nahi hai toh khud bana dega
+    syncOptions:
+      - CreateNamespace=true # <-- Sahi tarika ye hai! C bada hoga aur list me aayega.
