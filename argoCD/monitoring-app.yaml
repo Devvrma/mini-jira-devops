@@ -11,7 +11,7 @@ spec:
     targetRevision: 61.3.0
     helm:
       valueFiles:
-        - ../monitoring/prometheus/values.yaml # Agar values file local repo me h to iska path map hoga, ya abhi bina valuesFiles ke bhi check kar sakte ho.
+        - monitoring/prometheus/values.yaml 
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
