@@ -1,11 +1,9 @@
 prometheus:
   prometheusSpec:
-    retention: 2d # Sirf 2 din 
-    storageSpec:
-      disableMountSubPath: true
+    retention: 2d
 
 grafana:
   enabled: true
   adminPassword: admin
   persistence:
-    enabled: false 
+    enabled: false
