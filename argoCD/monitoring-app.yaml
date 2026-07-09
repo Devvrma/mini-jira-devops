@@ -5,17 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources: # <--- Dhayan do, yahan 'source' ki jagah 'sources' (multiple) ho gaya h
+  sources: 
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       targetRevision: 61.3.0
       helm:
         valueFiles:
-          - $values/monitoring/prometheus/values.yaml # <--- Yeh niche wale repo se file uthayega
+          - $values/monitoring/prometheus/values.yaml 
     
-    - repoURL: https://github.com/Devvrma/mini-jira-devops.git # <--- Tera asli GitHub Repo
+    - repoURL: https://github.com/Devvrma/mini-jira-devops.git 
       targetRevision: main
-      ref: values # <--- Iska naam humne 'values' rakh diya jo upar use ho raha h
+      ref: values 
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

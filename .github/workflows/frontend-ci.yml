@@ -1,6 +1,5 @@
 name: Frontend CI Pipeline
 
-# 👑 Yeh batayega ki pipeline ko kab chalna hai (Manual chalane ke liye)
 on:
   workflow_dispatch:
 

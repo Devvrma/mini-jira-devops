@@ -5,10 +5,8 @@ metadata:
   namespace: argocd
 spec:
   description: "Project for Mini Jira DevOps Stack"
-  # Allow deployment to any cluster (we are using in-cluster/local)
   destinations:
     - namespace: '*'
       server: '*'
-  # Allow pulling resources from our Git repository only
   sourceRepos:
     - '*'

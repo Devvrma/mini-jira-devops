@@ -9,7 +9,6 @@ spec:
     repoURL: 'https://github.com/Devvrma/mini-jira-devops.git'
     targetRevision: HEAD
     path: kuberentes
-    # 👇 Yeh line ArgoCD ko saare sub-folders read karne degi
     directory:
       recurse: true
   destination:

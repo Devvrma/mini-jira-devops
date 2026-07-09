@@ -5,5 +5,4 @@ metadata:
 data:
   POSTGRES_DB: "minijira"
   POSTGRES_USER: "postgres"
-  # Backend ko batane ke liye ki DB kahan milega (Postgres ki service ka naam)
   DATABASE_HOST: "postgres-service"

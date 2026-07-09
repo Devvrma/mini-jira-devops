@@ -19,7 +19,6 @@ spec:
           ports:
             - containerPort: 8000
           env:
-            # ConfigMap se DB Host uthayega (jo ki postgres-service hai)
             - name: POSTGRES_SERVER
               valueFrom:
                 configMapKeyRef:
@@ -35,7 +34,6 @@ spec:
                 configMapKeyRef:
                   name: minijira-config
                   key: POSTGRES_USER
-            # Secret se Password uthayega safely
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
